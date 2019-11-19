@@ -7,8 +7,12 @@ const bodyParser = require( 'body-parser' );
 app.use( express.static( 'server/public' ) );
 // also needed for POST
 app.use( bodyParser.urlencoded( { extended: true } ) );
+
 // globals
-const port = 5000;
+    // Look for a PORT FROM THE RUNNING PROCESS,
+    // If there isn't one (it's undefined or falsy)
+    // then use our default port 5000.
+    const PORT = process.env.PORT || 5000;
 
 // server
 app.listen( port, ()=>{
